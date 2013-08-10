@@ -2,6 +2,7 @@ package org.nathantehbeast.scripts;
 
 import org.powerbot.script.Manifest;
 import org.powerbot.script.PollingScript;
+import org.powerbot.script.util.Timer;
 import org.powerbot.script.wrappers.GameObject;
 
 /**
@@ -13,8 +14,8 @@ import org.powerbot.script.wrappers.GameObject;
  */
 @Manifest(
         authors = "nathantehbeast",
-        name = "Test",
-        description = "v5 Test Script",
+        name = "Miner",
+        description = "Mines everything in its path.",
         hidden = true,
         version = 1.0
 )
@@ -23,12 +24,22 @@ public class v5Miner extends PollingScript {
     @Override
     public int poll() {
         final GameObject rock = ctx.objects.select().id(0).nearest().first().iterator().next();
-        if (rock != null && rock.interact("Mine")) {
-            System.out.println("Sleeping for 1 minute.");
-            return 60000;
-        } else {
-            return 300;
+        if (rock != null && contains(rock.getActions(), "mine") && rock.interact("Mine")) {
+            final Timer t = new Timer(15000);
+            while (ctx.players.local().getAnimation() != -1 && ctx.players.local().isInMotion() && t.isRunning()) {
+                sleep(600);
+            }
         }
+        return 600;
+    }
+
+    private boolean contains(String[] arr, String x) {
+        for (String s : arr) {
+            if (s.toLowerCase().equals(x.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

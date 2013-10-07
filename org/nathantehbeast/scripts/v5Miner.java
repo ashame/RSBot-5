@@ -19,6 +19,7 @@ import org.powerbot.script.wrappers.GameObject;
         hidden = true,
         version = 1.0
 )
+
 public class v5Miner extends PollingScript {
 
     @Override
@@ -32,7 +33,7 @@ public class v5Miner extends PollingScript {
         }
         return 600;
     }
-
+  
     private boolean contains(String[] arr, String x) {
         for (String s : arr) {
             if (s.toLowerCase().equals(x.toLowerCase())) {

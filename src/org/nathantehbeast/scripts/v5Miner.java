@@ -15,7 +15,6 @@ import org.powerbot.script.Manifest;
         authors = "nathantehbeast",
         name = "Nathan's AIO Miner",
         description = "Mines whatever you want it to. If your location isn't currently supported, PM me to have it added.",
-        hidden = true,
         version = 1.12
 
 )

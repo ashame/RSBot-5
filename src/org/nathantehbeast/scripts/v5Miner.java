@@ -16,7 +16,7 @@ import org.powerbot.script.Manifest;
         name = "Nathan's AIO Miner",
         description = "Mines whatever you want it to. If your location isn't currently supported, PM me to have it added.",
         hidden = true,
-        version = 1.11
+        version = 1.12
 
 )
 public class v5Miner extends Script {

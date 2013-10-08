@@ -17,7 +17,7 @@ import org.powerbot.script.wrappers.GameObject;
         name = "Miner",
         description = "Mines everything in its path.",
         hidden = true,
-        version = 1.0
+        version = 1.1
 )
 
 public class v5Miner extends PollingScript {

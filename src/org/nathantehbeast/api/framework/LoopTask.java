@@ -1,7 +1,5 @@
 package org.nathantehbeast.api.framework;
 
-import org.powerbot.script.util.Delay;
-
 /**
  * Created with IntelliJ IDEA.
  * User: Nathan
@@ -25,7 +23,7 @@ public abstract class LoopTask extends Task {
             try {
                 final int wait = loop();
                 if (wait > 0) {
-                    Delay.sleep(wait);
+                    sleep(wait);
                 } else {
                     running = false;
                 }

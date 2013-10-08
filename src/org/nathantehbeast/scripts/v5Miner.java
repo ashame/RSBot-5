@@ -1,9 +1,8 @@
 package org.nathantehbeast.scripts;
 
+import org.nathantehbeast.api.framework.Script;
+import org.nathantehbeast.api.tools.Logger;
 import org.powerbot.script.Manifest;
-import org.powerbot.script.PollingScript;
-import org.powerbot.script.util.Timer;
-import org.powerbot.script.wrappers.GameObject;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,28 +17,23 @@ import org.powerbot.script.wrappers.GameObject;
         description = "Mines whatever you want it to. If your location isn't currently supported, PM me to have it added.",
         hidden = true,
         version = 1.1
+
 )
-public class v5Miner extends PollingScript {
+public class v5Miner extends Script {
 
     @Override
-    public int poll() {
-        final GameObject rock = ctx.objects.select().id(0).nearest().first().iterator().next();
-        if (rock != null && contains(rock.getActions(), "mine") && rock.interact("Mine")) {
-            final Timer t = new Timer(15000);
-            while (ctx.players.local().getAnimation() != -1 && ctx.players.local().isInMotion() && t.isRunning()) {
-                sleep(600);
-            }
-        }
-        return 600;
+    public boolean setup() {
+        return true;
     }
 
-    private boolean contains(String[] arr, String x) {
-        for (String s : arr) {
-            if (s.toLowerCase().equals(x.toLowerCase())) {
-                return true;
-            }
-        }
-        return false;
+    @Override
+    public void loop() {
+       delay = 10000;
+        Logger.log("Testing");
     }
 
+    @Override
+    public void exit() {
+
+    }
 }

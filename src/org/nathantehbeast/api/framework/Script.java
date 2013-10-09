@@ -48,16 +48,16 @@ public abstract class Script extends PollingScript {
 
     @Override
     public void start() {
-        ctx.init(getContext());
+        //ctx.init(getContext());
         if (logger) {
             new Logger(new Font("Calibri", Font.PLAIN, 11));
-            ctx.getExecutor().submit(new LoopTask(ctx) {
+            /*ctx.getExecutor().submit(new LoopTask(ctx) {
                 @Override
                 public int loop() {
                     Logger.updateTime();
                     return 1000;
                 }
-            });
+            });     */
         }
         if (!setup()) {
             Logger.log("There was an error starting the script.");
@@ -77,6 +77,7 @@ public abstract class Script extends PollingScript {
         } catch (Exception e) {
             Logger.log("Timer pls fix internal errors");
         }
+        Logger.updateTime();
         return delay;
     }
 

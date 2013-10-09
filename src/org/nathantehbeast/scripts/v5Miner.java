@@ -23,6 +23,7 @@ public class v5Miner extends Script {
 
     @Override
     public boolean setup() {
+        provide(new Test());
         return true;
     }
 

@@ -50,6 +50,7 @@ public abstract class Script extends PollingScript {
     public void start() {
         ctx2.init(getContext());
         if (logger) {
+            Logger.log("Attaching logger");
             new Logger(new Font("Calibri", Font.PLAIN, 11));
             ctx2.getExecutor().submit(new LoopTask(ctx2) {
                 @Override
@@ -73,6 +74,16 @@ public abstract class Script extends PollingScript {
     @Override
     public int poll() {
         try {
+            if (container != null) {
+                synchronized (container) {
+                    for (Node node : container) {
+                        if (node.activate()) {
+                            node.execute();
+                            currentNode = node;
+                        }
+                    }
+                }
+            }
             loop();
         } catch (Exception e) {
             Logger.log("Timer pls fix internal errors");

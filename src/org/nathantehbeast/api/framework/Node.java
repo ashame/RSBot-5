@@ -10,6 +10,6 @@ package org.nathantehbeast.api.framework;
 public interface Node {
 
     public abstract boolean activate();
-    public abstract boolean execute();
+    public abstract void execute();
 
 }

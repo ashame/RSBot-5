@@ -1,5 +1,6 @@
 package org.nathantehbeast.scripts;
 
+import org.nathantehbeast.api.framework.Node;
 import org.nathantehbeast.api.framework.Script;
 import org.nathantehbeast.api.tools.Logger;
 import org.powerbot.script.Manifest;
@@ -27,12 +28,23 @@ public class v5Miner extends Script {
 
     @Override
     public void loop() {
-       delay = 10000;
-        Logger.log("Testing");
     }
 
     @Override
     public void exit() {
+    }
 
+    private class Test implements Node {
+
+        @Override
+        public boolean activate() {
+            return true;
+        }
+
+        @Override
+        public void execute() {
+            delay = 10000;
+            Logger.log("Current System Time: "+System.currentTimeMillis());
+        }
     }
 }

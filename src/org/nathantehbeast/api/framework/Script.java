@@ -22,7 +22,7 @@ public abstract class Script extends PollingScript {
     public Node currentNode;
     public int delay = 600;
     private boolean logger = Environment.getDisplayName().equalsIgnoreCase("nathantehbeast");
-    private Context ctx = new Context(getContext());
+    private Context ctx2 = new Context(getContext());
 
     public synchronized final void provide(final Node... nodes) {
         if (nodes != null) {
@@ -48,16 +48,16 @@ public abstract class Script extends PollingScript {
 
     @Override
     public void start() {
-        //ctx.init(getContext());
+        ctx2.init(getContext());
         if (logger) {
             new Logger(new Font("Calibri", Font.PLAIN, 11));
-            /*ctx.getExecutor().submit(new LoopTask(ctx) {
+            ctx2.getExecutor().submit(new LoopTask(ctx2) {
                 @Override
                 public int loop() {
                     Logger.updateTime();
                     return 1000;
                 }
-            });     */
+            });
         }
         if (!setup()) {
             Logger.log("There was an error starting the script.");

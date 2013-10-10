@@ -1,6 +1,6 @@
 package org.nathantehbeast.api.framework.methods;
 
-import pathfinder.core.wrapper.TilePath;
+import org.powerbot.script.wrappers.Locatable;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,8 +15,12 @@ public class Walking extends Provider {
         super(ctx);
     }
 
-    public boolean walkPath(TilePath path) {
-        return false;
+    public void setRun(boolean on) {
+        ctx.movement.setRunning(on);
+    }
+
+    public boolean walkTo(Locatable l) {
+        return ctx.movement.stepTowards(l);
     }
 
 }

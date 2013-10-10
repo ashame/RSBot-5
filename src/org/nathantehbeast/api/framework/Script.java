@@ -1,10 +1,11 @@
 package org.nathantehbeast.api.framework;
 
+import org.powerbot.script.methods.Environment;
+
 import org.nathantehbeast.api.framework.methods.Context;
 import org.nathantehbeast.api.framework.methods.LoopTask;
 import org.nathantehbeast.api.tools.Logger;
 import org.powerbot.script.PollingScript;
-import org.powerbot.script.methods.Environment;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public abstract class Script extends PollingScript {
             for (Node node : nodes) {
                 if (!container.contains(node)) {
                     container.add(node);
-                    Logger.log("Providing: "+node);
+                    Logger.log("Providing: " + node);
                 }
             }
         }
@@ -42,7 +43,7 @@ public abstract class Script extends PollingScript {
             for (Node node : nodes) {
                 if (container.contains(node)) {
                     container.remove(node);
-                    Logger.log("Revoking: "+node);
+                    Logger.log("Revoking: " + node);
                 }
             }
         }
@@ -66,7 +67,8 @@ public abstract class Script extends PollingScript {
             Logger.log("There was an error starting the script.");
             try {
                 Logger.remove();
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
             stop();
         }
     }
@@ -90,6 +92,7 @@ public abstract class Script extends PollingScript {
         } catch (Exception e) {
             Logger.log("Timer pls fix internal errors");
         }
+        Logger.updateTime();
         return delay;
     }
 

@@ -17,7 +17,7 @@ import java.awt.*;
         authors = "Nathan L",
         name = "Nathan's AIO Miner",
         description = "Currently being rewritten.",
-        version = 1.15,
+        version = 1.2,
         hidden = true
 )
 

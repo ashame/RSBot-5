@@ -2,9 +2,10 @@ package org.nathantehbeast.scripts.aiominer;
 
 import org.nathantehbeast.api.framework.Script;
 import org.nathantehbeast.api.framework.methods.Context;
-import org.nathantehbeast.scripts.aiominer.Constants.*;
-
+import org.nathantehbeast.scripts.aiominer.Constants.Ore;
 import org.powerbot.script.Manifest;
+
+import java.awt.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,7 +22,7 @@ import org.powerbot.script.Manifest;
         hidden = true
 )
 
-public class v5Miner extends Script {
+public abstract class v5Miner extends Script {
 
     private static Ore ore;
     private static int radius;
@@ -53,4 +54,8 @@ public class v5Miner extends Script {
         radius = i;
     }
 
+    @Override
+    public void onRepaint(Graphics2D g) {
+        g.drawString("Current Node: "+currentNode, 15, 100);
+    }
 }

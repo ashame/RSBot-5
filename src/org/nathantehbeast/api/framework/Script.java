@@ -1,5 +1,6 @@
 package org.nathantehbeast.api.framework;
 
+import org.powerbot.event.PaintListener;
 import org.powerbot.script.methods.Environment;
 
 import org.nathantehbeast.api.framework.methods.Context;
@@ -19,7 +20,7 @@ import java.util.List;
  * Time: 3:47 PM
  * To change this template use File | Settings | File Templates.
  */
-public abstract class Script extends PollingScript {
+public abstract class Script extends PollingScript implements PaintListener {
 
     private static final List<Node> container = Collections.synchronizedList(new ArrayList<Node>());
     public Node currentNode;
@@ -106,5 +107,12 @@ public abstract class Script extends PollingScript {
     }
 
     public abstract void exit();
+
+    @Override
+    public void repaint(Graphics g) {
+        onRepaint((Graphics2D) g);
+    }
+
+    public abstract void onRepaint(Graphics2D g);
 
 }

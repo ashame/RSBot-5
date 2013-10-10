@@ -19,5 +19,4 @@ public abstract class Node extends Provider {
     public abstract int priority();
     public abstract boolean activate();
     public abstract void execute();
-
 }

@@ -2,9 +2,6 @@ package org.nathantehbeast.scripts.aiominer.nodes;
 
 import org.nathantehbeast.api.framework.Node;
 import org.nathantehbeast.api.framework.methods.Context;
-import org.nathantehbeast.scripts.aiominer.Constants.BankLocations;
-import org.nathantehbeast.scripts.aiominer.Constants.Ore;
-import org.powerbot.script.wrappers.Tile;
 import pathfinder.impl.Pathfinder;
 
 /**
@@ -18,18 +15,18 @@ public class Mining extends Node {
 
     private Pathfinder pathfinder;
 
-    public Mining(Context ctx, Ore ore, BankLocations bankLocation, Tile center, int radius) {
+    public Mining(Context ctx) {
         super(ctx);
     }
 
     @Override
     public int priority() {
-        return -1;
+        return 3;
     }
 
     @Override
     public boolean activate() {
-        return false;
+        return true;
     }
 
     @Override

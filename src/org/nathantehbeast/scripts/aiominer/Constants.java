@@ -88,6 +88,7 @@ public final class Constants {
             this.banks = banks;
             this.rocks = rocks;
         }
+
         public final boolean isNoted(int i) {
             for (final Ore ore : Ore.values()) {
                 if (i == ore.notedId) {
@@ -124,10 +125,5 @@ public final class Constants {
         VARROCK_WEST(),
         FALADOR(),
         UNSUPPORTED();
-
-
-        BankLocations() {
-
-        }
     }
 }

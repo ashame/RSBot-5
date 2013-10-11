@@ -17,14 +17,11 @@ import java.awt.*;
 @Manifest(
         authors = "Nathan L",
         name = "Nathan's Wine Grabber",
-        description = "Grabs wines for profit.",
+        description = "Grabs wines for profit. Start in the Chaos temple or Falador west bank - Have telegrab on the first actionbar slot, home teleport on the second.",
         version = 1.1
 )
 
 public class WineGrabber extends Script {
-
-    private final int WINE_ID = 245;
-    private final int LAW_ID = 563;
 
     @Override
     public boolean setup() {

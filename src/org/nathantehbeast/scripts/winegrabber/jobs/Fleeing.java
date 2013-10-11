@@ -11,6 +11,7 @@ import org.powerbot.script.wrappers.Tile;
  * Time: 12:21 AM
  * To change this template use File | Settings | File Templates.
  */
+
 public class Fleeing extends Node {
 
     public Fleeing(Context ctx) {

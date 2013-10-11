@@ -13,6 +13,7 @@ import org.powerbot.script.wrappers.Tile;
  * Time: 11:19 PM
  * To change this template use File | Settings | File Templates.
  */
+
 public class TraverseTemple extends Node {
 
     public TraverseTemple(Context ctx) {

@@ -13,6 +13,7 @@ import org.powerbot.script.wrappers.Tile;
  * Time: 11:22 PM
  * To change this template use File | Settings | File Templates.
  */
+
 public class BankItems extends Node {
 
     public BankItems(Context ctx) {

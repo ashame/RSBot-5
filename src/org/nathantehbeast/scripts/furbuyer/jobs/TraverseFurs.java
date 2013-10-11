@@ -24,7 +24,7 @@ public class TraverseFurs extends Node {
 
     @Override
     public boolean activate() {
-        return ctx.players.local().getLocation().distanceTo(new Tile(3218, 3435, 0)) > 6 && !ctx.inventory.isFull();
+        return ctx.players.local().getLocation().distanceTo(new Tile(3218, 3435, 0)) > 6 && !ctx.inventory.isFull() && !ctx.bank.isOpen();
     }
 
     @Override

@@ -37,7 +37,7 @@ public class BuyFurs extends Node {
     @Override
     public void execute() {
         if ((baraek = ctx.npcs.select().id(547).poll()) != ctx.npcs.getNil()) {
-            if (!ctx.chat.isChatting() && baraek.interact("Talk-to")) {
+            if (!ctx.chat.isChatting() && baraek.interact("Talk-to", baraek.getName())) {
                 new TimedCondition() {
                     @Override
                     public boolean check() {
@@ -72,7 +72,12 @@ public class BuyFurs extends Node {
                                 }
                             }.waitFor(1200);
                             ctx.keyboard.send("{VK_SPACE}");
-                            sleep(600);
+                            new TimedCondition() {
+                                @Override
+                                public boolean check() {
+                                    return !ctx.chat.isChatting();
+                                }
+                            }.waitFor(1000);
                         }
                     }
                 }

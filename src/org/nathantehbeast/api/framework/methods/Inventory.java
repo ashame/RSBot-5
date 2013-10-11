@@ -17,6 +17,10 @@ public class Inventory extends Provider {
         super(ctx);
     }
 
+    public boolean isEmpty() {
+        return ctx.backpack.select().count() == 0;
+    }
+
     public boolean isFull() {
         return ctx.backpack.select().count() == 28;
     }

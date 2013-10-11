@@ -1,5 +1,6 @@
 package org.nathantehbeast.scripts.furbuyer.jobs;
 
+import com.sk.util.time.TimedCondition;
 import org.nathantehbeast.api.framework.Node;
 import org.nathantehbeast.api.framework.context.Context;
 import org.powerbot.script.wrappers.Tile;
@@ -31,7 +32,25 @@ public class BankFurs extends Node {
     @Override
     public void execute() {
         if (ctx.bank.open()) {
-            ctx.bank.depositInventory();
+            if (ctx.bank.depositInventory()) {
+                new TimedCondition() {
+                    @Override
+                    public boolean check() {
+                        return ctx.inventory.isEmpty();
+                    }
+                }.waitFor(1500);
+                if (ctx.bank.close()) {
+                    new TimedCondition() {
+                        @Override
+                        public boolean check() {
+                            return !ctx.bank.isOpen();
+                        }
+                    }.waitFor(1500);
+                    if (ctx.bank.isOpen()) {
+                        ctx.bank.close();
+                    }
+                }
+            }
         }
     }
 }

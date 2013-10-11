@@ -6,6 +6,7 @@ import org.nathantehbeast.api.framework.utils.Logger;
 import org.nathantehbeast.api.framework.utils.Web;
 import org.powerbot.script.wrappers.Locatable;
 import org.powerbot.script.wrappers.Tile;
+import org.powerbot.script.wrappers.TilePath;
 
 import java.util.HashMap;
 
@@ -40,10 +41,14 @@ public class Walking extends Provider {
         if (!webCache.containsKey(pathName.toLowerCase())) {
             webCache.put(pathName.toLowerCase(), new Web(ctx, start, end));
             Logger.log("[Pathfinder] Added path '"+pathName+"' to cache");
-            Logger.log("[Pathfinder] All cached webs: "+webCache.keySet());
+            Logger.log("[Pathfinder] All cached paths: "+webCache.keySet());
         }
         if (reverse)
             return webCache.get(pathName.toLowerCase()).getReversed().traverse();
         return webCache.get(pathName.toLowerCase()).getPath().traverse();
+    }
+
+    public TilePath getPath(String key) {
+        return webCache.get(key.toLowerCase()).getPath();
     }
 }

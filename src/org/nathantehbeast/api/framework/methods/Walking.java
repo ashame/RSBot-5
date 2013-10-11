@@ -2,9 +2,12 @@ package org.nathantehbeast.api.framework.methods;
 
 import org.nathantehbeast.api.framework.context.Context;
 import org.nathantehbeast.api.framework.context.Provider;
+import org.nathantehbeast.api.framework.utils.Logger;
 import org.nathantehbeast.api.framework.utils.Web;
 import org.powerbot.script.wrappers.Locatable;
 import org.powerbot.script.wrappers.Tile;
+
+import java.util.HashMap;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,7 +18,7 @@ import org.powerbot.script.wrappers.Tile;
  */
 public class Walking extends Provider {
 
-    protected Web web;
+    protected HashMap<String, Web> webCache = new HashMap<>();
 
     public Walking(Context ctx) {
         super(ctx);
@@ -29,18 +32,18 @@ public class Walking extends Provider {
         return ctx.movement.stepTowards(l);
     }
 
-    public boolean walkPath(final Tile start, final Tile end) {
-        return walkPath(start, end, false);
+    public boolean walkPath(final Tile start, final Tile end, final String pathName) {
+        return walkPath(start, end, false, pathName);
     }
 
-    public boolean walkPath(final Tile start, final Tile end, final boolean reverse) {
-        if (web == null) web = new Web(ctx, start, end);
+    public boolean walkPath(final Tile start, final Tile end, final boolean reverse, String pathName) {
+        if (!webCache.containsKey(pathName.toLowerCase())) {
+            webCache.put(pathName.toLowerCase(), new Web(ctx, start, end));
+            Logger.log("[Pathfinder] Added path '"+pathName+"' to cache");
+            Logger.log("[Pathfinder] All cached webs: "+webCache.keySet());
+        }
         if (reverse)
-            return web.getReversed().traverse();
-        return web.getPath().traverse();
-    }
-
-    public void clearWeb() {
-        web = null;
+            return webCache.get(pathName.toLowerCase()).getReversed().traverse();
+        return webCache.get(pathName.toLowerCase()).getPath().traverse();
     }
 }

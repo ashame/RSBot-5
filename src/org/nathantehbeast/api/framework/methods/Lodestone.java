@@ -59,7 +59,7 @@ public class Lodestone extends Provider {
                 }
             }.waitFor(2000);
             if (ctx.widgets.get(1092, 8).isOnScreen()) {
-                return ctx.mouse.click(ctx.widgets.get(1092, loc.getChildId()).getCenterPoint(), false);
+                return ctx.mouse.click(ctx.widgets.get(1092, loc.getChildId()).getCenterPoint(), true);
             }
         }
         return false;

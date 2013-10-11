@@ -95,7 +95,7 @@ public abstract class Script extends PollingScript implements PaintListener {
             }
             loop();
         } catch (Exception e) {
-            Logger.log("Timer pls fix internal errors");
+            e.printStackTrace();
         }
         Logger.updateTime();
         return delay;

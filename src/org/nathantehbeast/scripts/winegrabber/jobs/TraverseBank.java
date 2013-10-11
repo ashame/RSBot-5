@@ -33,7 +33,7 @@ public class TraverseBank extends Node {
         if (ctx.players.local().getLocation().distanceTo(new Tile(2952, 3474, 0)) <= 10) {
             ctx.lodestone.teleportTo(Lodestone.Location.FALADOR, 1);
         } else {
-            ctx.walking.walkPath(new Tile(2965, 3401, 0), new Tile(2945, 3367, 0));
+            ctx.walking.walkPath(new Tile(2965, 3401, 0), new Tile(2945, 3367, 0), "toBank");
         }
     }
 }

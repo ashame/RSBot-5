@@ -34,16 +34,19 @@ public class Context extends MethodContext {
 
     public Context(final MethodContext ctx) {
         super(ctx.getBot());
+
         this.running = true;
         this.executor = Executors.newCachedThreadPool();
+
         this.gameObject = new GameObject(this);
         this.skill = new Skills(this);
         this.walking = new Walking(this);
         this.inventory = new Inventory(this);
+        this.lodestone = new Lodestone(this);
+
         this.skKeyboard = new SkKeyboard(this);
         this.actionBar = new ActionBar(this);
         this.combat = new Combat(this);
-        this.lodestone = new Lodestone(this);
     }
 
     @Override

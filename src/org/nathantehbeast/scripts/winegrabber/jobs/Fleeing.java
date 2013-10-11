@@ -29,6 +29,6 @@ public class Fleeing extends Node {
 
     @Override
     public void execute() {
-        ctx.walking.walkPath(new Tile(2949, 3475, 0), new Tile(2948, 3452, 0));
+        ctx.walking.walkPath(new Tile(2949, 3475, 0), new Tile(2948, 3452, 0), "fleeing");
     }
 }

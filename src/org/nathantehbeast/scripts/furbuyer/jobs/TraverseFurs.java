@@ -24,11 +24,13 @@ public class TraverseFurs extends Node {
 
     @Override
     public boolean activate() {
-        return ctx.players.local().getLocation().distanceTo(new Tile(3218, 3435, 0)) > 6 && !ctx.inventory.isFull() && !ctx.bank.isOpen();
+        return ctx.players.local().getLocation().distanceTo(new Tile(3218, 3435, 0)) > 6 && !ctx.inventory.isFull();
     }
 
     @Override
     public void execute() {
+        if (ctx.bank.isOpen())
+            ctx.bank.close();
         ctx.walking.walkPath(new Tile(3187, 3436, 0), new Tile(3218, 3435, 0), "toFurs");
     }
 }

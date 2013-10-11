@@ -15,7 +15,7 @@ import org.powerbot.script.wrappers.Tile;
  */
 public class BuyFurs extends Node {
 
-    private Npc baraek;
+    Npc npc;
 
     public BuyFurs(Context ctx) {
         super(ctx);
@@ -23,7 +23,7 @@ public class BuyFurs extends Node {
 
     @Override
     public int priority() {
-        return 0;
+        return 1;
     }
 
     @Override
@@ -33,8 +33,8 @@ public class BuyFurs extends Node {
 
     @Override
     public void execute() {
-        if ((baraek = ctx.npcs.select().id(547).poll()) != ctx.npcs.getNil()) {
-            if (!ctx.chat.isChatting() && baraek.interact("Talk-to", baraek.getName())) {
+        if ((npc = ctx.npcs.select().id(547).poll()) != ctx.npcs.getNil()) {
+            if (!ctx.chat.isChatting() && npc.interact("Talk-to", npc.getName())) {
                 new TimedCondition() {
                     @Override
                     public boolean check() {

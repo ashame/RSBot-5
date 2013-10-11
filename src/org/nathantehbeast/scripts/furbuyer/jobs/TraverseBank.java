@@ -29,6 +29,10 @@ public class TraverseBank extends Node {
 
     @Override
     public void execute() {
+        if (ctx.chat.isChatting()) {
+            ctx.keyboard.send("{VK_SPACE}");
+            sleep(300);
+        }
         ctx.walking.walkPath(new Tile(3218, 3435, 0), new Tile(3187, 3436, 0), "toBank");
     }
 }

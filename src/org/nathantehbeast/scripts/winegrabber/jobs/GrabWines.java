@@ -37,7 +37,7 @@ public class GrabWines extends Node {
 
     @Override
     public int priority() {
-        return 0;  //To change body of implemented methods use File | Settings | File Templates.
+        return 0;
     }
 
     @Override

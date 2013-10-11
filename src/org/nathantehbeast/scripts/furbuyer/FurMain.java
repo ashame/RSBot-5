@@ -27,7 +27,7 @@ public class FurMain extends Script {
     @Override
     public boolean setup() {
         provide(new BankFurs(ctx), new BuyFurs(ctx), new TraverseBank(ctx), new TraverseFurs(ctx));
-        delay = 75;
+        delay = 50;
         return true;
     }
 

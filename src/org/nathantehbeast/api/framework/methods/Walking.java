@@ -49,6 +49,12 @@ public class Walking extends Provider {
     }
 
     public TilePath getPath(String key) {
+        return getPath(key, false);
+    }
+
+    public TilePath getPath(String key, boolean reverse) {
+        if (reverse)
+            return webCache.get(key.toLowerCase()).getReversed();
         return webCache.get(key.toLowerCase()).getPath();
     }
 }

@@ -18,7 +18,7 @@ public class Inventory extends Provider {
     }
 
     public boolean isFull() {
-        return ctx.backpack.count() == 28;
+        return ctx.backpack.select().count() == 28;
     }
 
     public boolean contains(int id) {

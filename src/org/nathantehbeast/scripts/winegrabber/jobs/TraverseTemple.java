@@ -26,7 +26,7 @@ public class TraverseTemple extends Node {
 
     @Override
     public boolean activate() {
-        return !ctx.players.local().isInCombat() && !ctx.inventory.isFull() && ctx.players.local().getLocation().distanceTo(new Tile(2952, 3474, 0)) > 1  && !ctx.bank.isOpen();
+        return !ctx.players.local().isInCombat() && !ctx.inventory.isFull() && ctx.players.local().getLocation().distanceTo(new Tile(2952, 3474, 0)) > 2  && !ctx.bank.isOpen();
     }
 
     @Override

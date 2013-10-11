@@ -22,7 +22,6 @@ public class Context extends MethodContext {
     private final ExecutorService executor;
     private boolean running;
 
-    public GameObject gameObject;
     public Skills skill;
     public Walking walking;
     public Inventory inventory;
@@ -38,7 +37,6 @@ public class Context extends MethodContext {
         this.running = true;
         this.executor = Executors.newCachedThreadPool();
 
-        this.gameObject = new GameObject(this);
         this.skill = new Skills(this);
         this.walking = new Walking(this);
         this.inventory = new Inventory(this);

@@ -18,7 +18,7 @@ import java.awt.*;
         authors = "Nathan L",
         name = "Nathan's Wine Grabber",
         description = "Grabs wines for profit.",
-        version = 1.0
+        version = 1.1
 )
 
 public class WineGrabber extends Script {

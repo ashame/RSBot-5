@@ -35,7 +35,7 @@ public final class SkMethodContext extends MethodContext {
 		super.init(ctx);
 		super.keyboard = this.keyboard = new SkKeyboard(this);
 
-		this.actionBar = new ActionBar(this);
+		//this.actionBar = new ActionBar(this);
 		this.combat = new Combat(this);
 	}
 }

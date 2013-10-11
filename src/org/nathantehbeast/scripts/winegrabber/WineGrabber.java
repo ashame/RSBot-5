@@ -1,37 +1,34 @@
-package org.nathantehbeast.scripts.aiominer;
+package org.nathantehbeast.scripts.winegrabber;
 
 import org.nathantehbeast.api.framework.Script;
-import org.nathantehbeast.api.framework.methods.Task;
-import org.nathantehbeast.api.framework.utils.SkillData;
-import org.nathantehbeast.scripts.aiominer.jobs.Mining;
+import org.nathantehbeast.scripts.winegrabber.jobs.GrabWines;
 import org.powerbot.script.Manifest;
-import org.powerbot.script.wrappers.Tile;
 
 import java.awt.*;
 
 /**
  * Created with IntelliJ IDEA.
  * User: Nathan
- * Date: 7/25/13
- * Time: 8:07 PM
+ * Date: 10/10/13
+ * Time: 5:07 PM
  * To change this template use File | Settings | File Templates.
  */
 
 @Manifest(
         authors = "Nathan L",
-        name = "Nathan's AIO Miner",
-        description = "Currently being rewritten.",
-        version = 1.2,
-        hidden = true
+        name = "Nathan's Wine Grabber",
+        description = "Grabs wines for profit.",
+        version = 1.0
 )
 
-public class v5Miner extends Script {
+public class WineGrabber extends Script {
 
-    private SkillData sd;
+    private final int WINE_ID = 245;
+    private final int LAW_ID = 563;
 
     @Override
     public boolean setup() {
-        provide(new Mining(ctx));
+        provide(new GrabWines(ctx));
         return true;
     }
 
@@ -42,6 +39,7 @@ public class v5Miner extends Script {
 
     @Override
     public void exit() {
+
     }
 
     @Override

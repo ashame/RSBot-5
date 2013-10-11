@@ -1,12 +1,14 @@
 package org.nathantehbeast.api.framework;
 
+import com.sk.SkMethodContext;
 import org.powerbot.event.PaintListener;
 import org.powerbot.script.methods.Environment;
 
-import org.nathantehbeast.api.framework.methods.Context;
+import org.nathantehbeast.api.framework.context.Context;
 import org.nathantehbeast.api.framework.methods.LoopTask;
-import org.nathantehbeast.api.tools.Logger;
+import org.nathantehbeast.api.framework.utils.Logger;
 import org.powerbot.script.PollingScript;
+import org.powerbot.script.methods.MethodContext;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -25,8 +27,18 @@ public abstract class Script extends PollingScript implements PaintListener {
     private static final List<Node> container = Collections.synchronizedList(new ArrayList<Node>());
     public Node currentNode;
     private boolean logger = Environment.getDisplayName().equalsIgnoreCase("nathan l");
-    private Context ctx2 = new Context(getContext());
     public int delay = 600;
+    public Context ctx;
+    public SkMethodContext sk;
+
+    public Script() {
+        this.ctx = new Context(super.ctx);
+    }
+
+    @Override
+    public void setContext(MethodContext mc) {
+        this.ctx.init(mc);
+    }
 
     public synchronized final void provide(final Node... nodes) {
         if (nodes != null) {
@@ -39,24 +51,12 @@ public abstract class Script extends PollingScript implements PaintListener {
         }
     }
 
-    public synchronized final void revoke(final Node... nodes) {
-        if (nodes != null) {
-            for (Node node : nodes) {
-                if (container.contains(node)) {
-                    container.remove(node);
-                    Logger.log("Revoking: " + node);
-                }
-            }
-        }
-    }
-
     @Override
     public void start() {
-        ctx2.init(getContext());
         if (logger) {
             Logger.log("Attaching logger");
             new Logger(new Font("Calibri", Font.PLAIN, 11));
-            ctx2.getExecutor().submit(new LoopTask(ctx2) {
+            ctx.getExecutor().submit(new LoopTask(ctx) {
                 @Override
                 public int loop() {
                     Logger.updateTime();

@@ -1,7 +1,7 @@
 package org.nathantehbeast.api.framework;
 
-import org.nathantehbeast.api.framework.methods.Context;
-import org.nathantehbeast.api.framework.methods.Provider;
+import org.nathantehbeast.api.framework.context.Context;
+import org.nathantehbeast.api.framework.context.Provider;
 
 /**
  * Created with IntelliJ IDEA.

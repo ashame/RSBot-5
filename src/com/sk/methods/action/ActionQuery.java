@@ -1,25 +1,24 @@
 package com.sk.methods.action;
 
-import java.util.Collections;
-import java.util.EnumSet;
-
-import org.powerbot.script.lang.AbstractQuery;
-import org.powerbot.script.lang.Filter;
-import org.powerbot.script.wrappers.Action.Type;
-import org.powerbot.script.wrappers.Identifiable;
-
-import com.sk.SkMethodContext;
 import com.sk.methods.action.ability.AbilityLevel;
 import com.sk.methods.action.ability.AbilityStyle;
 import com.sk.methods.action.magic.Spellbook;
 import com.sk.methods.action.structure.BarIcon;
+import org.powerbot.script.lang.AbstractQuery;
+import org.powerbot.script.lang.Filter;
+import org.powerbot.script.methods.MethodContext;
+import org.powerbot.script.wrappers.Action.Type;
+import org.powerbot.script.wrappers.Identifiable;
+
+import java.util.Collections;
+import java.util.EnumSet;
 
 public abstract class ActionQuery<T extends Action> extends AbstractQuery<ActionQuery<T>, T> implements
 		Identifiable.Query<ActionQuery<T>> {
 
-	public SkMethodContext ctx;
+	public MethodContext ctx;
 
-	public ActionQuery(SkMethodContext ctx) {
+	public ActionQuery(MethodContext ctx) {
 		super(ctx);
 		this.ctx = ctx;
 	}

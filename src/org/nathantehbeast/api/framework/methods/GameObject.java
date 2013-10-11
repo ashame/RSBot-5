@@ -1,5 +1,8 @@
 package org.nathantehbeast.api.framework.methods;
 
+import org.nathantehbeast.api.framework.context.Context;
+import org.nathantehbeast.api.framework.context.Provider;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Nathan

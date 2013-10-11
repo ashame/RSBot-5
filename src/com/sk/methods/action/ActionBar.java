@@ -1,7 +1,11 @@
 package com.sk.methods.action;
 
-import static org.powerbot.script.methods.CombatBar.SETTING_ABILITY;
-import static org.powerbot.script.methods.CombatBar.SETTING_ITEM;
+import com.sk.methods.action.ability.*;
+import com.sk.methods.action.structure.BarIcon;
+import com.sk.util.time.TimedCondition;
+import org.nathantehbeast.api.framework.context.Context;
+import org.powerbot.script.wrappers.Action.Type;
+import org.powerbot.script.wrappers.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,29 +13,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import org.powerbot.script.methods.MethodContext;
-import org.powerbot.script.wrappers.Action.Type;
-import org.powerbot.script.wrappers.Component;
-
-import com.sk.SkMethodContext;
-import com.sk.methods.action.ability.AttackAbility;
-import com.sk.methods.action.ability.ConstitutionAbility;
-import com.sk.methods.action.ability.DefenceAbility;
-import com.sk.methods.action.ability.MagicAbility;
-import com.sk.methods.action.ability.RangedAbility;
-import com.sk.methods.action.ability.StrengthAbility;
-import com.sk.methods.action.structure.BarIcon;
-import com.sk.util.time.TimedCondition;
+import static org.powerbot.script.methods.CombatBar.SETTING_ABILITY;
+import static org.powerbot.script.methods.CombatBar.SETTING_ITEM;
 
 public class ActionBar extends ActionQuery<Action> {
 
-	public SkMethodContext ctx;
-	public MethodContext octx;
+	public Context ctx;
+	public Context octx;
 	public Logger log = Logger.getLogger(getClass().getSimpleName());
 
-	public ActionBar(SkMethodContext ctx) {
-		super(ctx);
-		this.ctx = ctx;
+	public ActionBar(Context ctx) {
+        super(ctx);
+        this.ctx = ctx;
 		this.octx = ctx;
 
 		addIcons(AttackAbility.class);
@@ -63,21 +56,15 @@ public class ActionBar extends ActionQuery<Action> {
 		if (getCurrentBar() == bar)
 			return true;
 		if (!isExpanded()) {
-			if (ctx.debug)
-				log.warning("switchBar: bar must be expanded to switch");
 			return false;
 		}
 		int dir = (((bar - getCurrentBar()) % NUM_BARS + NUM_BARS / 2 + NUM_BARS) % NUM_BARS - NUM_BARS / 2);
 		final Component button = ctx.widgets.get(BAR_WIDGET, dir < 0 ? PREV_BAR : NEXT_BAR);
 		final String action = dir < 0 ? "Previous" : "Next";
 		if (!button.isValid()) {
-			if (ctx.debug)
-				log.info("switchBar: switch button invalid");
 			return false;
 		}
 		if (!button.isVisible()) {
-			if (ctx.debug)
-				log.info("switchBar: switch button not visible");
 			return false;
 		}
 		for (int i = 0; i < Math.abs(dir); ++i) {
@@ -135,19 +122,19 @@ public class ActionBar extends ActionQuery<Action> {
 	}
 
 	public boolean isLocked() {
-		return octx.combatBar.isLocked();
+		return ctx.combatBar.isLocked();
 	}
 
 	public boolean isExpanded() {
-		return octx.combatBar.isExpanded();
+		return ctx.combatBar.isExpanded();
 	}
 
 	public boolean setLocked(final boolean locked) {
-		return octx.combatBar.setLocked(locked);
+		return ctx.combatBar.setLocked(locked);
 	}
 
 	public boolean setExpanded(boolean expanded) {
-		return octx.combatBar.setExpanded(expanded);
+		return ctx.combatBar.setExpanded(expanded);
 	}
 
 	// private static final int BAR_LOCKED_SETTING = 682, BAR_LOCKED_MASK = 0x10;

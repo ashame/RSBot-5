@@ -1,7 +1,7 @@
 package org.nathantehbeast.api.framework.methods;
 
-import org.nathantehbeast.api.framework.methods.Context;
-import org.nathantehbeast.api.framework.methods.Contextable;
+import org.nathantehbeast.api.framework.context.Context;
+import org.nathantehbeast.api.framework.context.Contextable;
 
 /**
  * Created with IntelliJ IDEA.

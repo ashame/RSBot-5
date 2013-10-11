@@ -18,7 +18,7 @@ import java.awt.*;
         authors = "Nathan L",
         name = "Nathan's Bear Fur Buyer",
         description = "Buys bear furs",
-        version = 1.0,
+        version = 1.1,
         hidden = true
 )
 
@@ -27,6 +27,7 @@ public class FurMain extends Script {
     @Override
     public boolean setup() {
         provide(new BankFurs(ctx), new BuyFurs(ctx), new TraverseBank(ctx), new TraverseFurs(ctx));
+        delay = 75;
         return true;
     }
 

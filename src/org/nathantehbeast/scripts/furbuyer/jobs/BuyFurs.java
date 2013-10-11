@@ -3,7 +3,6 @@ package org.nathantehbeast.scripts.furbuyer.jobs;
 import com.sk.util.time.TimedCondition;
 import org.nathantehbeast.api.framework.Node;
 import org.nathantehbeast.api.framework.context.Context;
-import org.powerbot.script.wrappers.Component;
 import org.powerbot.script.wrappers.Npc;
 import org.powerbot.script.wrappers.Tile;
 
@@ -17,11 +16,9 @@ import org.powerbot.script.wrappers.Tile;
 public class BuyFurs extends Node {
 
     private Npc baraek;
-    private final Component CHAT;
 
     public BuyFurs(Context ctx) {
         super(ctx);
-        this.CHAT = ctx.widgets.get(1188, 12);
     }
 
     @Override
@@ -41,45 +38,18 @@ public class BuyFurs extends Node {
                 new TimedCondition() {
                     @Override
                     public boolean check() {
-                        return ctx.chat.select().first().text("you sell me some").poll().getText().contains("you sell me some");
+                        return ctx.chat.isChatting();
                     }
-                }.waitFor(1000);
-                sleep(600);
+                }.waitFor(2000);
             }
-            if (ctx.keyboard.send("{VK_1}")) {
-                sleep(600);
-                new TimedCondition() {
-                    @Override
-                    public boolean check() {
-                        return ctx.chat.isContinue();
-                    }
-                }.waitFor(1200);
-                if (ctx.keyboard.send("{VK_SPACE}")) {
-                    sleep(600);
-                    new TimedCondition() {
-                        @Override
-                        public boolean check() {
-                            return ctx.chat.isContinue();
-                        }
-                    }.waitFor(1200);
-                    if (ctx.keyboard.send("{VK_SPACE}")) {
-                        if (ctx.chat.select().first().text("Yeah, okay").poll().select()) {
-                            sleep(600);
-                            new TimedCondition() {
-                                @Override
-                                public boolean check() {
-                                    return ctx.chat.isContinue();
-                                }
-                            }.waitFor(1200);
-                            ctx.keyboard.send("{VK_SPACE}");
-                            new TimedCondition() {
-                                @Override
-                                public boolean check() {
-                                    return !ctx.chat.isChatting();
-                                }
-                            }.waitFor(1000);
-                        }
-                    }
+            if (ctx.chat.isChatting()) {
+                if (ctx.chat.isContinue()) {
+                    ctx.keyboard.send("{VK_SPACE}");
+                    sleep(300);
+                }
+                else {
+                    ctx.keyboard.send("{VK_1}");
+                    sleep(300);
                 }
             }
         }

@@ -3,10 +3,7 @@ package org.nathantehbeast.api.framework.context;
 import com.sk.methods.Combat;
 import com.sk.methods.SkKeyboard;
 import com.sk.methods.action.ActionBar;
-import org.nathantehbeast.api.framework.methods.GameObject;
-import org.nathantehbeast.api.framework.methods.Inventory;
-import org.nathantehbeast.api.framework.methods.Skills;
-import org.nathantehbeast.api.framework.methods.Walking;
+import org.nathantehbeast.api.framework.methods.*;
 import org.powerbot.script.methods.MethodContext;
 
 import java.util.concurrent.ExecutorService;
@@ -29,6 +26,7 @@ public class Context extends MethodContext {
     public Skills skill;
     public Walking walking;
     public Inventory inventory;
+    public Lodestone lodestone;
 
     public SkKeyboard skKeyboard;
     public ActionBar actionBar;
@@ -45,6 +43,7 @@ public class Context extends MethodContext {
         this.skKeyboard = new SkKeyboard(this);
         this.actionBar = new ActionBar(this);
         this.combat = new Combat(this);
+        this.lodestone = new Lodestone(this);
     }
 
     @Override

@@ -28,7 +28,7 @@ public class GrabWines extends Node {
 
     @Override
     public boolean activate() {
-        return !ctx.inventory.isFull() && ctx.inventory.contains(563) && ctx.players.local().getLocation().distanceTo(new Tile(2952, 3474, 0)) < 2 && (wine = ctx.groundItems.select().id(245).poll()) != ctx.groundItems.getNil();
+        return !ctx.players.local().isInCombat() && !ctx.inventory.isFull() && ctx.inventory.contains(563) && ctx.players.local().getLocation().distanceTo(new Tile(2952, 3474, 0)) < 2 && (wine = ctx.groundItems.select().id(245).poll()) != ctx.groundItems.getNil();
     }
 
     @Override

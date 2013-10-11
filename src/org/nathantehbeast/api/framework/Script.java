@@ -24,7 +24,7 @@ import java.util.List;
  */
 public abstract class Script extends PollingScript implements PaintListener {
 
-    private static final List<Node> container = Collections.synchronizedList(new ArrayList<Node>());
+    private final List<Node> container = Collections.synchronizedList(new ArrayList<Node>());
     public Node currentNode;
     private boolean logger = Environment.getDisplayName().equalsIgnoreCase("nathan l");
     public int delay = 600;
@@ -38,6 +38,10 @@ public abstract class Script extends PollingScript implements PaintListener {
     @Override
     public void setContext(MethodContext mc) {
         this.ctx.init(mc);
+    }
+
+    public int getContainerSize() {
+        return container.size();
     }
 
     public synchronized final void provide(final Node... nodes) {

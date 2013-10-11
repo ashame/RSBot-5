@@ -2,6 +2,7 @@ package org.nathantehbeast.scripts.winegrabber.jobs;
 
 import org.nathantehbeast.api.framework.Node;
 import org.nathantehbeast.api.framework.context.Context;
+import org.nathantehbeast.api.framework.methods.Lodestone;
 import org.powerbot.script.wrappers.Tile;
 
 /**
@@ -24,14 +25,13 @@ public class TraverseTemple extends Node {
 
     @Override
     public boolean activate() {
-        return ctx.backpack.count() == 1 && ctx.players.local().getLocation().distanceTo(new Tile(2951, 3474, 0)) > 5 && !ctx.bank.isOpen();
+        return !ctx.players.local().isInCombat() && ctx.backpack.count() == 1 && ctx.players.local().getLocation().distanceTo(new Tile(2951, 3474, 0)) > 5 && !ctx.bank.isOpen();
     }
 
     @Override
     public void execute() {
         if (ctx.players.local().getLocation().distanceTo(new Tile(2945, 3367, 0)) <= 8) {
-            ctx.actionBar.getActionAt(1).select();
-            //Lodestone stuff
+            ctx.lodestone.teleportTo(Lodestone.Location.FALADOR, 1);
         } else {
             ctx.walking.walkPath(new Tile(2965, 3401, 0), new Tile(2951, 3474, 0));
         }

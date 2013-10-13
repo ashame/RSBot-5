@@ -42,7 +42,7 @@ public class BankFurs extends Node {
                 ctx.bank.depositInventory();
                 sleep(1000);
             }
-            Logger.log("Runtime: "+Timer.format(main.startTime - System.currentTimeMillis()));
+            Logger.log("Runtime: "+Timer.format(System.currentTimeMillis() - main.startTime));
             Logger.log("Furs Bought: "+main.fursBought);
             ctx.bank.close();
         }

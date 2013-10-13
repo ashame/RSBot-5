@@ -64,7 +64,7 @@ public class FurMain extends Script implements MessageListener {
     public void onRepaint(Graphics2D g) {
         g.drawString("Current Node: "+currentNode, 15, 15);
         g.drawString("Furs Bought: "+fursBought, 15, 30);
-        g.drawString("Runtime: "+ Timer.format(startTime - System.currentTimeMillis()), 15, 45);
+        g.drawString("Runtime: "+ Timer.format(System.currentTimeMillis() - startTime), 15, 45);
     }
 
     @Override

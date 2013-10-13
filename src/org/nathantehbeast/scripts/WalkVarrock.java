@@ -16,8 +16,8 @@ import java.awt.*;
 
 @Manifest(
         name = "Walks to Varrock",
-        description = "Walks to Varrock",
-        authors = "Nathan"
+        description = "Literally just walks to Varrock from just about anywhere.",
+        authors = "Nathan L"
 )
 public class WalkVarrock extends Script {
 

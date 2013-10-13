@@ -1,10 +1,12 @@
 package org.nathantehbeast.scripts.furbuyer;
 
 import org.nathantehbeast.api.framework.Script;
+import org.nathantehbeast.api.framework.methods.LoopTask;
 import org.nathantehbeast.scripts.furbuyer.jobs.*;
 import org.powerbot.event.MessageEvent;
 import org.powerbot.event.MessageListener;
 import org.powerbot.script.Manifest;
+import org.powerbot.script.methods.Game;
 import org.powerbot.script.util.Timer;
 
 import java.awt.*;
@@ -36,6 +38,16 @@ public class FurMain extends Script implements MessageListener {
         provide(new BankFurs(ctx, this), new BuyFurs(ctx), new TraverseBank(ctx), new TraverseFurs(ctx));
         startTime = System.currentTimeMillis();
         delay = 50;
+        ctx.getExecutor().submit(new LoopTask(ctx) {
+            @Override
+            public int loop() {
+                if (ctx.game.getClientState() == Game.INDEX_MAP_LOADED && ctx.backpack.getMoneyPouch() < 20) {
+                    delay = -1;
+                    return -1;
+                }
+                return 60000;
+            }
+        });
         return true;
     }
 

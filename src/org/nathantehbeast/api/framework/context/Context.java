@@ -26,6 +26,7 @@ public class Context extends MethodContext {
     public Walking walking;
     public Inventory inventory;
     public Lodestone lodestone;
+    public Calculations calculations;
 
     public SkKeyboard skKeyboard;
     public ActionBar actionBar;
@@ -41,6 +42,7 @@ public class Context extends MethodContext {
         this.walking = new Walking(this);
         this.inventory = new Inventory(this);
         this.lodestone = new Lodestone(this);
+        this.calculations = new Calculations(this);
 
         this.skKeyboard = new SkKeyboard(this);
         this.actionBar = new ActionBar(this);

@@ -2,6 +2,8 @@ package org.nathantehbeast.scripts.furbuyer.jobs;
 
 import org.nathantehbeast.api.framework.Node;
 import org.nathantehbeast.api.framework.context.Context;
+import org.nathantehbeast.api.framework.utils.Logger;
+import org.nathantehbeast.scripts.furbuyer.FurMain;
 import org.powerbot.script.util.Timer;
 import org.powerbot.script.wrappers.Tile;
 
@@ -15,8 +17,11 @@ import org.powerbot.script.wrappers.Tile;
 
 public class BankFurs extends Node {
 
-    public BankFurs(Context ctx) {
+    FurMain main;
+
+    public BankFurs(Context ctx, FurMain main) {
         super(ctx);
+        this.main = main;
     }
 
     @Override
@@ -37,6 +42,8 @@ public class BankFurs extends Node {
                 ctx.bank.depositInventory();
                 sleep(1000);
             }
+            Logger.log("Runtime: "+Timer.format(main.startTime - System.currentTimeMillis()));
+            Logger.log("Furs Bought: "+main.fursBought);
             ctx.bank.close();
         }
     }

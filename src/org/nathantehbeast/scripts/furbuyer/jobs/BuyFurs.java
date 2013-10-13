@@ -34,6 +34,8 @@ public class BuyFurs extends Node {
     @Override
     public void execute() {
         if ((npc = ctx.npcs.select().id(547).poll()) != ctx.npcs.getNil()) {
+            if (!npc.isOnScreen())
+                ctx.camera.turnTo(npc);
             if (!ctx.chat.isChatting() && npc.interact("Talk-to", npc.getName())) {
                 new TimedCondition() {
                     @Override

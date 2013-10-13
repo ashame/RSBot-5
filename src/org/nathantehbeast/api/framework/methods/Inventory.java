@@ -25,6 +25,10 @@ public class Inventory extends Provider {
         return ctx.backpack.select().count() == 28;
     }
 
+    public int getCount(int id) {
+        return ctx.backpack.select().id(id).count();
+    }
+
     public boolean contains(int id) {
         for (Item item : ctx.backpack.getAllItems()) {
             if (item.getId() == id) {

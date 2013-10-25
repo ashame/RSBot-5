@@ -17,7 +17,7 @@ public class Web extends MethodProvider {
 
     public Web(final Context ctx, final Tile start, final Tile end) {
         super(ctx);
-        Logger.log("[INFO] Attepting to walk from " + start + " to " + end);
+        Logger.log("[Pathfinder] Finding path from " + start + " to " + end);
         pathfinder = new Pathfinder();
         tilePath = pathfinder.findPath(Structure.TILE.getHash(start.x, start.y, start.plane), Structure.TILE.getHash(end.x, end.y, end.plane), 1000, false);
         path = toPath(tilePath);

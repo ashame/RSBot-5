@@ -19,7 +19,7 @@ import java.util.HashMap;
  */
 public class Walking extends Provider {
 
-    protected HashMap<String, Web> webCache = new HashMap<>();
+    protected HashMap<String, Web> webCache = new HashMap<String, Web>();
 
     public Walking(Context ctx) {
         super(ctx);

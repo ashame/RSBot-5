@@ -81,6 +81,6 @@ public class PathNode implements Comparable<PathNode> {
     }
 
     public String toString() {
-        return name == null ? (name = new SoftReference<>("PathNode(" + Structure.TILE.getX(hash) + "," + Structure.TILE.getY(hash) + "," + Structure.TILE.getZ(hash) + "," + object+")")).get() : name.get();
+        return name == null ? (name = new SoftReference<String>("PathNode(" + Structure.TILE.getX(hash) + "," + Structure.TILE.getY(hash) + "," + Structure.TILE.getZ(hash) + "," + object+")")).get() : name.get();
     }
 }

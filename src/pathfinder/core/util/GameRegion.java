@@ -26,9 +26,9 @@ public class GameRegion {
     private static final File DATA = new File(DIRECTORY, "MapData.dat");
 
 
-    private static final HashMap<Integer, GameRegion> GAME_REGION_MAP = new HashMap<>();
-    private static final HashMap<Integer, RegionData> REGION_DATA_MAP = new HashMap<>();
-    private static final LinkedList<GameRegion> LOADED = new LinkedList<>();
+    private static final HashMap<Integer, GameRegion> GAME_REGION_MAP = new HashMap<Integer, GameRegion>();
+    private static final HashMap<Integer, RegionData> REGION_DATA_MAP = new HashMap<Integer, RegionData>();
+    private static final LinkedList<GameRegion> LOADED = new LinkedList<GameRegion>();
 
     private static boolean loaded = false;
 
@@ -61,7 +61,8 @@ public class GameRegion {
         if (mapData != null) {
             return mapData;
         }
-        try (final FileInputStream dataStream = new FileInputStream(DATA)) {
+        try {
+            final FileInputStream dataStream = new FileInputStream(DATA);
             mapData = new int[4][64][64];
             if (regionData != null) {
                 dataStream.skip(regionData.getIndex());
@@ -123,7 +124,8 @@ public class GameRegion {
             if (!checkFiles() && !updateFiles()) {
                 return false;
             }
-            try (final FileInputStream indexStream = new FileInputStream(INDEX)) {
+            try {
+                final FileInputStream indexStream = new FileInputStream(INDEX);
                 byte[] bytes = new byte[12];
                 while (indexStream.read(bytes) != -1) {
                     ByteBuffer buffer = ByteBuffer.wrap(bytes);
@@ -156,20 +158,23 @@ public class GameRegion {
             Logger.getGlobal().info("[Pathfinder] Updating map data");
             HttpURLConnection connection = (HttpURLConnection) new URL(DOWNLOAD_URL).openConnection();
             connection.addRequestProperty("Connection", "close");
-            try (InputStream inputStream = connection.getInputStream(); OutputStream outputStream = new FileOutputStream(ZIPPED)) {
+            try {
+                InputStream inputStream = connection.getInputStream(); OutputStream outputStream = new FileOutputStream(ZIPPED);
                 writeFile(1024, inputStream, outputStream);
             } finally {
                 connection.disconnect();
             }
-            try (ZipFile file = new ZipFile(ZIPPED)) {
+            try {
+                ZipFile file = new ZipFile(ZIPPED);
                 Enumeration<? extends ZipEntry> enumeration = file.entries();
                 while (enumeration.hasMoreElements()) {
                     ZipEntry entry = enumeration.nextElement();
-                    try (InputStream inputStream = file.getInputStream(entry); OutputStream outputStream = new FileOutputStream(new File(DIRECTORY, entry.getName()))) {
+                    try {
+                        InputStream inputStream = file.getInputStream(entry); OutputStream outputStream = new FileOutputStream(new File(DIRECTORY, entry.getName()));
                         writeFile(1024, inputStream, outputStream);
-                    }
+                    } catch (Exception ignored) {}
                 }
-            }
+            } catch (Exception ignored) {}
             Logger.getGlobal().info("[Pathfinder] Map data updated");
             return true;
         } catch (IOException e) {

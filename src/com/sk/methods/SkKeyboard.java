@@ -1,13 +1,9 @@
 package com.sk.methods;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
 import org.powerbot.script.methods.Keyboard;
 import org.powerbot.script.methods.MethodContext;
+
+import java.util.*;
 
 public class SkKeyboard extends Keyboard {
 
@@ -54,8 +50,8 @@ public class SkKeyboard extends Keyboard {
 		throw new IllegalArgumentException();
 	}
 
-	private static final Set<String> valid = new HashSet<>();
-	private static final Map<String, String> keyNames = new HashMap<>();
+	private static final Set<String> valid = new HashSet<String>();
+	private static final Map<String, String> keyNames = new HashMap<String, String>();
 
 	static {
 		for (char c = 'A'; c <= 'Z'; ++c)

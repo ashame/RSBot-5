@@ -3,6 +3,7 @@ package org.nathantehbeast.scripts.winegrabber;
 import org.nathantehbeast.api.framework.Script;
 import org.nathantehbeast.scripts.winegrabber.jobs.*;
 import org.powerbot.script.Manifest;
+import org.powerbot.script.util.SkillData;
 
 import java.awt.*;
 
@@ -23,9 +24,12 @@ import java.awt.*;
 
 public class WineGrabber extends Script {
 
+    private SkillData sd;
+
     @Override
     public boolean setup() {
         provide(new GrabWines(ctx), new Fleeing(ctx), new BankItems(ctx), new TraverseBank(ctx), new TraverseTemple(ctx));
+        sd = new SkillData(ctx);
         return true;
     }
 

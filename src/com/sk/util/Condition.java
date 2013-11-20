@@ -1,10 +1,10 @@
 package com.sk.util;
 
+import org.powerbot.script.wrappers.Validatable;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import org.powerbot.script.wrappers.Validatable;
 
 public interface Condition {
 	public static final Condition TRUE = new Condition() {
@@ -19,7 +19,7 @@ public interface Condition {
 	public static class Builder {
 
 		private final boolean and;
-		private List<Condition> blocks = new ArrayList<>();
+		private List<Condition> blocks = new ArrayList<Condition>();
 
 		public Builder(boolean and) {
 			this.and = and;

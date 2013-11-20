@@ -1,9 +1,9 @@
 package com.sk.util;
 
+import org.powerbot.script.lang.AbstractQuery;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import org.powerbot.script.lang.AbstractQuery;
 
 public class Util {
 	public static int indexOf(int[] array, int search) {
@@ -14,7 +14,7 @@ public class Util {
 	}
 
 	public static <K, V> Map<K, V> toMap(K[] ka, V[] va) {
-		Map<K, V> ret = new HashMap<>();
+		Map<K, V> ret = new HashMap<K, V>();
 		for (int i = 0; i < ka.length && i < va.length; ++i)
 			ret.put(ka[i], va[i]);
 		return ret;

@@ -41,7 +41,7 @@ public class ActionBar extends ActionQuery<Action> {
 		}
 	}
 
-	private Map<Integer, BarIcon> icons = new HashMap<>();
+	private Map<Integer, BarIcon> icons = new HashMap<Integer, BarIcon>();
 
 	public BarIcon getIconWithId(int id) {
 		BarIcon ret = icons.get(id);
@@ -101,7 +101,7 @@ public class ActionBar extends ActionQuery<Action> {
 
 	@Override
 	protected List<Action> get() {
-		List<Action> ret = new ArrayList<>(NUM_ACTIONS);
+		List<Action> ret = new ArrayList<Action>(NUM_ACTIONS);
 		for (Action a : getActions())
 			if (a.isValid())
 				ret.add(a);

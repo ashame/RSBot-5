@@ -3,6 +3,7 @@ package org.nathantehbeast.scripts.winegrabber.jobs;
 import org.nathantehbeast.api.framework.Node;
 import org.nathantehbeast.api.framework.context.Context;
 import org.nathantehbeast.api.framework.methods.Lodestone;
+import org.nathantehbeast.api.framework.methods.Lodestone.Location;
 import org.powerbot.script.util.Timer;
 import org.powerbot.script.wrappers.Tile;
 
@@ -33,7 +34,7 @@ public class TraverseBank extends Node {
     @Override
     public void execute() {
         if (ctx.players.local().getLocation().distanceTo(new Tile(2952, 3474, 0)) <= 10) {
-            ctx.lodestone.teleportTo(Lodestone.Location.FALADOR, 1);
+            ctx.lodestone.teleportTo(Location.FALADOR, 1);
             sleep(2000);
             final Timer t = new Timer(10000);
             while (ctx.players.local().getAnimation() != -1 && t.isRunning()) {

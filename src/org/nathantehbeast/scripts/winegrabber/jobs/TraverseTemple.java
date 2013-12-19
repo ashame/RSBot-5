@@ -27,7 +27,7 @@ public class TraverseTemple extends Node {
 
     @Override
     public boolean activate() {
-        return !ctx.players.local().isInCombat() && !ctx.inventory.isFull() && ctx.players.local().getLocation().distanceTo(new Tile(2952, 3474, 0)) > 2  && !ctx.bank.isOpen();
+        return !ctx.players.local().isInCombat() && !ctx.inventory.isFull() && ctx.players.local().getLocation().distanceTo(new Tile(2952, 3474, 0)) > 2  && !ctx.bank.isOpen() && ctx.inventory.contains(563);
     }
 
     @Override
@@ -43,7 +43,8 @@ public class TraverseTemple extends Node {
             if (ctx.players.local().getLocation().distanceTo(new Tile(2952, 3474, 0)) <= 3) {
                 ctx.movement.stepTowards(new Tile(2952, 3474, 0));
             } else {
-                ctx.walking.walkPath(new Tile(2965, 3401, 0), new Tile(2951, 3474, 0), "toTemple");
+                ctx.movement.findPath(new Tile(2951, 3474, 0)).traverse();
+                //ctx.walking.walkPath(new Tile(2965, 3401, 0), new Tile(2951, 3474, 0), "toTemple");
             }
         }
     }

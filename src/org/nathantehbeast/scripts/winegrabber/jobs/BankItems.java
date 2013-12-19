@@ -27,7 +27,7 @@ public class BankItems extends Node {
 
     @Override
     public boolean activate() {
-        return !ctx.players.local().isInCombat() && ctx.inventory.isFull() && ctx.players.local().getLocation().distanceTo(new Tile(2945, 3370, 0)) <= 8;
+        return !ctx.players.local().isInCombat() && (ctx.inventory.isFull() || !ctx.inventory.contains(563)) && ctx.players.local().getLocation().distanceTo(new Tile(2945, 3370, 0)) <= 8;
     }
 
     @Override

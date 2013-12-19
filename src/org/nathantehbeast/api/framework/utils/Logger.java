@@ -1,5 +1,6 @@
 package org.nathantehbeast.api.framework.utils;
 
+import org.nathantehbeast.api.framework.context.Context;
 import org.powerbot.script.Manifest;
 import org.powerbot.script.methods.Environment;
 
@@ -27,8 +28,6 @@ public class Logger {
     private static final Color defaultBackground = new Color(43, 43, 43);
     private static final Color defaultForeground = new Color(168, 182, 197);
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("HH:mm:ss z");
-    private static final Image img1 = Utilities.getImage("http://puu.sh/344VE.png");
-    private static final Image img2 = Utilities.getImage("http://puu.sh/344W9.png");
     private static int parentWidth;
     private static int parentHeight;
     private static int modifiedHeight;
@@ -49,7 +48,6 @@ public class Logger {
     public Logger(final Font font) {
         new Logger(font, defaultBackground, defaultForeground);
     }
-
     /**
      * Creates a new Logger with the default font, and your specified color on either the background or the foreground.
      *
@@ -152,35 +150,6 @@ public class Logger {
             name.setBackground(background);
             name.setForeground(foreground);
 
-            JButton capture = new JButton();
-            ImageIcon i1 = new ImageIcon(resize(img1, new Dimension(22, 22)));
-            capture.setIcon(i1);
-            capture.setBackground(background);
-            capture.setForeground(foreground);
-            capture.setPreferredSize(new Dimension(22, 22));
-            capture.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    //Utilities.openFile(Utilities.savePaint(0, 388, 520, 140));
-                    log("Not available in RSBot 5");
-                }
-            });
-
-            JButton open = new JButton();
-            ImageIcon i2 = new ImageIcon(resize(img2, new Dimension(22, 22)));
-            open.setIcon(i2);
-            open.setBackground(background);
-            open.setForeground(foreground);
-            open.setPreferredSize(new Dimension(22, 22));
-            open.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    //Utilities.openFile(Environment.getStorageDirectory().getPath());
-                    //log("Storage directory: " + Environment.getStorageDirectory());
-                    log("Not available in RSBot 5");
-                }
-            });
-
             timeLabel = new JLabel("Current time: " + DATE_FORMAT.format(Calendar.getInstance().getTime()));
             timeLabel.setFont(font);
             timeLabel.setBackground(background);
@@ -194,9 +163,6 @@ public class Logger {
             controls.add(name);
             controls.add(Box.createHorizontalGlue());
             controls.add(timeLabel);
-            controls.add(Box.createHorizontalGlue());
-            controls.add(open);
-            controls.add(capture);
             controls.setPreferredSize(new Dimension(parentWidth, 20));
 
 
@@ -212,6 +178,7 @@ public class Logger {
                 log("Loaded script: " + manifest.name() + " v" + manifest.version() + " by " + manifest.authors()[0]);
         } catch (Exception e) {
             log("There was an error initializing the logger: "+e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -239,7 +206,7 @@ public class Logger {
             parent.setSize(parentWidth, parentHeight - modifiedHeight);
             parent.setMinimumSize(new Dimension(parentWidth, parentHeight - modifiedHeight));
             parent.pack();
-            Logger.log("Successfully removed log pane");
+            System.out.println("Successfully removed log pane");
             return true;
         } catch (Exception e) {
             return false;

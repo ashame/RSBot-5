@@ -4,6 +4,7 @@ import org.nathantehbeast.api.framework.context.Context;
 import org.nathantehbeast.api.framework.context.Provider;
 import org.nathantehbeast.api.framework.utils.Logger;
 import org.nathantehbeast.api.framework.utils.Web;
+import org.powerbot.script.wrappers.LocalPath;
 import org.powerbot.script.wrappers.Locatable;
 import org.powerbot.script.wrappers.Tile;
 import org.powerbot.script.wrappers.TilePath;

@@ -32,12 +32,8 @@ public abstract class Script extends PollingScript implements PaintListener {
     public SkMethodContext sk;
 
     public Script() {
-        this.ctx = new Context(super.ctx);
-    }
-
-    @Override
-    public void setContext(MethodContext mc) {
-        this.ctx.init(mc);
+        this.ctx = new Context(super.ctx, this);
+        this.ctx.init(super.ctx);
     }
 
     public int getContainerSize() {
@@ -97,7 +93,6 @@ public abstract class Script extends PollingScript implements PaintListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Logger.updateTime();
         return delay;
     }
 

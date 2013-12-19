@@ -43,7 +43,7 @@ public class Utilities {
             return true;
         } catch (Exception e) {
             Logger.log("Error loading font: " + e.getMessage());
-            System.out.println("Stack trace:");
+            Logger.log("Stack trace:");
             e.printStackTrace();
             return false;
         }

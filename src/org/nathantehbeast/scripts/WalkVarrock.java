@@ -2,6 +2,7 @@ package org.nathantehbeast.scripts;
 
 import org.nathantehbeast.api.framework.Script;
 import org.powerbot.script.Manifest;
+import org.powerbot.script.methods.MethodContext;
 import org.powerbot.script.wrappers.GameObject;
 import org.powerbot.script.wrappers.Tile;
 
@@ -33,12 +34,8 @@ public class WalkVarrock extends Script {
 
     @Override
     public void loop() {
-        if ((gate = ctx.objects.select().id(28691).poll()) != ctx.objects.getNil() && gate.interact("Open")) {
-            sleep(1000);
-        }
-        if (start != null)
+        if (start != null && !start.equals(new Tile(-1, -1, -1)))
             ctx.walking.walkPath(start, new Tile(3218, 3435, 0), "toVarrock");
-
     }
 
     @Override

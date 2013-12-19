@@ -3,6 +3,7 @@ package org.nathantehbeast.api.framework.context;
 import com.sk.methods.Combat;
 import com.sk.methods.SkKeyboard;
 import com.sk.methods.action.ActionBar;
+import org.nathantehbeast.api.framework.Script;
 import org.nathantehbeast.api.framework.methods.*;
 import org.powerbot.script.methods.MethodContext;
 
@@ -21,6 +22,7 @@ public class Context extends MethodContext {
 
     private final ExecutorService executor;
     private boolean running;
+    private final Script script;
 
     public Skills skill;
     public Walking walking;
@@ -32,8 +34,9 @@ public class Context extends MethodContext {
     public ActionBar actionBar;
     public Combat combat;
 
-    public Context(final MethodContext ctx) {
+    public Context(final MethodContext ctx, Script script) {
         super(ctx.getBot());
+        this.script = script;
 
         this.running = true;
         this.executor = Executors.newCachedThreadPool();
@@ -49,11 +52,6 @@ public class Context extends MethodContext {
         this.combat = new Combat(this);
     }
 
-    @Override
-    public void init(MethodContext ctx) {
-        super.init(ctx);
-    }
-
     public void shutdownExecutor() {
         this.running = false;
         executor.shutdown();
@@ -65,5 +63,9 @@ public class Context extends MethodContext {
 
     public boolean isRunning() {
         return this.running;
+    }
+
+    public Script getScript() {
+        return this.script;
     }
 }

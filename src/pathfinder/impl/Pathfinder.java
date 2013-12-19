@@ -38,7 +38,7 @@ public class Pathfinder {
             Logger.getGlobal().config("[Pathfinder] Unable to find path due to error loading map data");
             return null;
         }
-        final HashMap<Integer, PathNode> nodeMap = new HashMap<Integer, PathNode>();
+        final HashMap<Integer, PathNode> nodeMap = new HashMap<Integer,PathNode>();
         final PriorityQueue<PathNode> openList = new PriorityQueue<PathNode>();
         openList.add(get(tileA, tileB, nodeMap));
         final long startTime = System.currentTimeMillis();

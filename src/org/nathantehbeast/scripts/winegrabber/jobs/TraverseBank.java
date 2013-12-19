@@ -6,6 +6,7 @@ import org.nathantehbeast.api.framework.methods.Lodestone;
 import org.nathantehbeast.api.framework.methods.Lodestone.Location;
 import org.powerbot.script.util.Timer;
 import org.powerbot.script.wrappers.Tile;
+import org.powerbot.script.wrappers.TilePath;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,8 +18,11 @@ import org.powerbot.script.wrappers.Tile;
 
 public class TraverseBank extends Node {
 
+    private final TilePath PATH;
+
     public TraverseBank(Context ctx) {
         super(ctx);
+        PATH = new TilePath(ctx, new Tile[]{});
     }
 
     @Override
@@ -28,7 +32,7 @@ public class TraverseBank extends Node {
 
     @Override
     public boolean activate() {
-        return !ctx.players.local().isInCombat() && ctx.inventory.isFull() && ctx.players.local().getLocation().distanceTo(new Tile(2945, 3367, 0)) > 5;
+        return !ctx.players.local().isInCombat() && (ctx.inventory.isFull() || !ctx.inventory.contains(563)) && ctx.players.local().getLocation().distanceTo(new Tile(2945, 3367, 0)) > 5;
     }
 
     @Override
@@ -41,7 +45,8 @@ public class TraverseBank extends Node {
                 sleep(800);
             }
         } else {
-            ctx.walking.walkPath(new Tile(2965, 3401, 0), new Tile(2945, 3367, 0), "toBank");
+            ctx.movement.findPath(new Tile(2945, 3367, 0)).traverse();
+            //ctx.walking.walkPath(new Tile(2965, 3401, 0), new Tile(2945, 3367, 0), "toBank");
         }
     }
 }

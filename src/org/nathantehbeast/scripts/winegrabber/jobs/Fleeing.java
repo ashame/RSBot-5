@@ -3,6 +3,7 @@ package org.nathantehbeast.scripts.winegrabber.jobs;
 import org.nathantehbeast.api.framework.Node;
 import org.nathantehbeast.api.framework.context.Context;
 import org.powerbot.script.wrappers.Tile;
+import org.powerbot.script.wrappers.TilePath;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,8 +15,14 @@ import org.powerbot.script.wrappers.Tile;
 
 public class Fleeing extends Node {
 
+    private final TilePath PATH;
+
     public Fleeing(Context ctx) {
         super(ctx);
+        this.PATH = new TilePath(ctx, new Tile[]{new Tile(2950, 3475, 0), new Tile(2955, 3477, 0),
+                new Tile(2957, 3472, 0), new Tile(2954, 3468, 0),
+                new Tile(2951, 3464, 0), new Tile(2950, 3459, 0),
+                new Tile(2950, 3454, 0) });
     }
 
     @Override
@@ -30,7 +37,6 @@ public class Fleeing extends Node {
 
     @Override
     public void execute() {
-        ctx.movement.findPath(new Tile(2947, 3452, 0)).traverse();
-        //ctx.walking.walkPath(new Tile(2949, 3475, 0), new Tile(2948, 3452, 0), "fleeing");
+        PATH.traverse();
     }
 }

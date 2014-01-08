@@ -19,23 +19,15 @@ public final class SkMethodContext extends MethodContext {
 	public MethodContext sup;
 
 	public SkMethodContext(boolean debug, AbstractScript script, MethodContext c) {
-		super(c.getBot());
+		super(MethodContext.newContext(c.getBot()));
 		this.debug = debug;
 		this.script = script;
+        this.keyboard = new SkKeyboard(this);
+        this.combat = new Combat(this);
 		this.sup = c;
 	}
 
 	public SkMethodContext(AbstractScript script, MethodContext c) {
 		this(false, script, c);
-	}
-
-
-    @Override
-	public void init(MethodContext ctx) {
-		super.init(ctx);
-		super.keyboard = this.keyboard = new SkKeyboard(this);
-
-		//this.actionBar = new ActionBar(this);
-		this.combat = new Combat(this);
 	}
 }

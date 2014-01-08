@@ -22,7 +22,11 @@ public class TraverseBank extends Node {
 
     public TraverseBank(Context ctx) {
         super(ctx);
-        PATH = new TilePath(ctx, new Tile[]{});
+        PATH = new TilePath(ctx, new Tile[]{new Tile(2965, 3401, 0), new Tile(2965, 3396, 0),
+                new Tile(2965, 3391, 0), new Tile(2966, 3386, 0),
+                new Tile(2963, 3382, 0), new Tile(2958, 3381, 0),
+                new Tile(2953, 3380, 0), new Tile(2949, 3377, 0),
+                new Tile(2946, 3373, 0), new Tile(2945, 3368, 0)});
     }
 
     @Override
@@ -45,8 +49,7 @@ public class TraverseBank extends Node {
                 sleep(800);
             }
         } else {
-            ctx.movement.findPath(new Tile(2945, 3367, 0)).traverse();
-            //ctx.walking.walkPath(new Tile(2965, 3401, 0), new Tile(2945, 3367, 0), "toBank");
+            PATH.traverse();
         }
     }
 }

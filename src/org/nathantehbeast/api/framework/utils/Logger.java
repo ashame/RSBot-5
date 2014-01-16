@@ -1,13 +1,10 @@
 package org.nathantehbeast.api.framework.utils;
 
-import org.nathantehbeast.api.framework.context.Context;
 import org.powerbot.script.Manifest;
 import org.powerbot.script.methods.Environment;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -19,6 +16,7 @@ import java.util.Calendar;
  * To change this template use File | Settings | File Templates.
  */
 
+@SuppressWarnings("ALL")
 public class Logger {
 
     private static JTextArea textArea;

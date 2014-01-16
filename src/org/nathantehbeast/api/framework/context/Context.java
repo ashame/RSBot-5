@@ -35,7 +35,7 @@ public class Context extends MethodContext {
     public Combat combat;
 
     public Context(final MethodContext ctx, Script script) {
-        super(MethodContext.newContext(ctx.getBot()));
+        super(ctx);
         this.script = script;
 
         this.running = true;

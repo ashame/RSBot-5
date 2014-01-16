@@ -2,7 +2,7 @@ package com.sk.methods.action.structure;
 
 import org.powerbot.script.wrappers.Component;
 
-import com.sk.SkMethodContext;
+import org.nathantehbeast.api.framework.context.Context;
 import com.sk.methods.action.magic.Rune;
 import com.sk.methods.action.magic.Spellbook;
 import com.sk.windows.Window;
@@ -38,7 +38,7 @@ public interface Spell extends BookIcon {
 		}
 
 		@Override
-		public Component getComponent(SkMethodContext ctx) {
+		public Component getComponent(Context ctx) {
 			return ctx.widgets.get(0, 0);
 		}
 
@@ -58,7 +58,7 @@ public interface Spell extends BookIcon {
 		}
 
 		@Override
-		public Component getCooldownComponent(SkMethodContext ctx) {
+		public Component getCooldownComponent(Context ctx) {
 			return getComponent(ctx);
 		}
 

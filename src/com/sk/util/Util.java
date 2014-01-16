@@ -1,9 +1,9 @@
 package com.sk.util;
 
-import org.powerbot.script.lang.AbstractQuery;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import org.powerbot.script.lang.AbstractQuery;
 
 public class Util {
 	public static int indexOf(int[] array, int search) {

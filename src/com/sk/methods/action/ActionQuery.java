@@ -1,24 +1,26 @@
 package com.sk.methods.action;
 
+import java.util.Collections;
+import java.util.EnumSet;
+
+import org.nathantehbeast.api.framework.context.Context;
+import org.powerbot.script.lang.AbstractQuery;
+import org.powerbot.script.lang.Filter;
+import org.powerbot.script.wrappers.Action.Type;
+import org.powerbot.script.wrappers.Identifiable;
+
+import org.nathantehbeast.api.framework.context.Context;
 import com.sk.methods.action.ability.AbilityLevel;
 import com.sk.methods.action.ability.AbilityStyle;
 import com.sk.methods.action.magic.Spellbook;
 import com.sk.methods.action.structure.BarIcon;
-import org.powerbot.script.lang.AbstractQuery;
-import org.powerbot.script.lang.Filter;
-import org.powerbot.script.methods.MethodContext;
-import org.powerbot.script.wrappers.Action.Type;
-import org.powerbot.script.wrappers.Identifiable;
-
-import java.util.Collections;
-import java.util.EnumSet;
 
 public abstract class ActionQuery<T extends Action> extends AbstractQuery<ActionQuery<T>, T> implements
 		Identifiable.Query<ActionQuery<T>> {
 
-	public MethodContext ctx;
+	public Context ctx;
 
-	public ActionQuery(MethodContext ctx) {
+	public ActionQuery(Context ctx) {
 		super(ctx);
 		this.ctx = ctx;
 	}

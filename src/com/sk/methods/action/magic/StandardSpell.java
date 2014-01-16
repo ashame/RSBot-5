@@ -3,7 +3,7 @@ package com.sk.methods.action.magic;
 import org.powerbot.script.methods.Skills;
 import org.powerbot.script.wrappers.Component;
 
-import com.sk.SkMethodContext;
+import org.nathantehbeast.api.framework.context.Context;
 import com.sk.methods.action.ability.AbilityStyle;
 import com.sk.methods.action.structure.Spell;
 import com.sk.windows.InnerAbilityTab;
@@ -69,7 +69,7 @@ ENCHANT_CROSSBOW_BOLT(InnerAbilityTab.SKILLING_SPELL, 2502, 4, 156, 14370),
 	}
 
 	@Override
-	public Component getCooldownComponent(SkMethodContext ctx) {
+	public Component getCooldownComponent(Context ctx) {
 		return ctx.widgets.get(getWidget(), COOLDOWN_COMPONENT).getChild(getChildIndex());
 	}
 
@@ -89,7 +89,7 @@ ENCHANT_CROSSBOW_BOLT(InnerAbilityTab.SKILLING_SPELL, 2502, 4, 156, 14370),
 	}
 
 	@Override
-	public Component getComponent(SkMethodContext ctx) {
+	public Component getComponent(Context ctx) {
 		return ctx.widgets.get(getWidget(), MAIN_COMPONENT).getChild(getChildIndex());
 	}
 

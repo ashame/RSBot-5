@@ -2,7 +2,7 @@ package com.sk.methods.action.structure;
 
 import org.powerbot.script.wrappers.Component;
 
-import com.sk.SkMethodContext;
+import org.nathantehbeast.api.framework.context.Context;
 
 
 public interface BookIcon extends WindowedIcon {
@@ -12,7 +12,7 @@ public interface BookIcon extends WindowedIcon {
 	
 	public int getWidget();
 	
-	public Component getCooldownComponent(SkMethodContext ctx);
+	public Component getCooldownComponent(Context ctx);
 	
 	public static final BookIcon NIL = Ability.NIL;
 	

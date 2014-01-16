@@ -1,10 +1,10 @@
 package com.sk.util;
 
-import org.powerbot.script.wrappers.Validatable;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import org.powerbot.script.wrappers.Validatable;
 
 public interface Condition {
 	public static final Condition TRUE = new Condition() {

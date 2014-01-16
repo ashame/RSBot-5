@@ -3,7 +3,7 @@ package com.sk.methods.action.ability;
 import org.powerbot.script.methods.Skills;
 import org.powerbot.script.wrappers.Component;
 
-import com.sk.SkMethodContext;
+import org.nathantehbeast.api.framework.context.Context;
 import com.sk.methods.action.structure.Ability;
 import com.sk.windows.InnerAbilityTab;
 import com.sk.windows.Window;
@@ -68,7 +68,7 @@ BARRICADE(AbilityLevel.ULTIMATE, 10, 14228, 81, 163, 60, 0),
 	}
 
 	@Override
-	public Component getComponent(SkMethodContext ctx) {
+	public Component getComponent(Context ctx) {
 		return ctx.widgets.get(getWidget(), MAIN_COMPONENT).getChild(childIndex);
 	}
 
@@ -103,7 +103,7 @@ BARRICADE(AbilityLevel.ULTIMATE, 10, 14228, 81, 163, 60, 0),
 	}
 
 	@Override
-	public Component getCooldownComponent(SkMethodContext ctx) {
+	public Component getCooldownComponent(Context ctx) {
 		return ctx.widgets.get(getWidget(), COOLDOWN_COMPONENT).getChild(childIndex);
 	}
 

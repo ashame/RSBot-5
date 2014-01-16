@@ -1,9 +1,13 @@
 package com.sk.methods;
 
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 import org.powerbot.script.methods.Keyboard;
 import org.powerbot.script.methods.MethodContext;
-
-import java.util.*;
 
 public class SkKeyboard extends Keyboard {
 

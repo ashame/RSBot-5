@@ -2,7 +2,7 @@ package com.sk.windows;
 
 import org.powerbot.script.methods.Hud;
 
-import com.sk.SkMethodContext;
+import org.nathantehbeast.api.framework.context.Context;
 
 public enum MainWindow implements Window {
 	ALL_CHAT(Hud.Window.ALL_CHAT),
@@ -33,17 +33,17 @@ public enum MainWindow implements Window {
 		this.wind = w;
 	}
 
-	public boolean close(SkMethodContext ctx) {
+	public boolean close(Context ctx) {
 		return ctx.hud.close(wind);
 	}
 
 	@Override
-	public boolean open(SkMethodContext ctx) {
+	public boolean open(Context ctx) {
 		return ctx.hud.view(wind);
 	}
 
 	@Override
-	public boolean isOpen(SkMethodContext ctx) {
+	public boolean isOpen(Context ctx) {
 		return ctx.hud.isVisible(wind);
 	}
 

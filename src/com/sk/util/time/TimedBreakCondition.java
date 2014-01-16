@@ -2,6 +2,7 @@ package com.sk.util.time;
 
 import org.powerbot.script.util.Timer;
 
+@SuppressWarnings("ALL")
 public abstract class TimedBreakCondition extends TimedCondition {
 
 	public TimedBreakCondition() {

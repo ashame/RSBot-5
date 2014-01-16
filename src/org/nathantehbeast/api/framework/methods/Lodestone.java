@@ -3,6 +3,7 @@ package org.nathantehbeast.api.framework.methods;
 import com.sk.util.time.TimedCondition;
 import org.nathantehbeast.api.framework.context.Context;
 import org.nathantehbeast.api.framework.context.Provider;
+import org.nathantehbeast.api.framework.utils.Logger;
 
 /**
  * Created with IntelliJ IDEA.
@@ -51,7 +52,8 @@ public class Lodestone extends Provider {
 
     public boolean teleportTo(Location loc, int actionSlot) {
         if (!isTeleporting()) {
-            ctx.actionBar.getActionAt(actionSlot).select();
+            Logger.log("Attempting to teleport to " + loc.toString());
+            ctx.keyboard.send(Integer.toString(actionSlot + 1));
             new TimedCondition() {
                 @Override
                 public boolean check() {

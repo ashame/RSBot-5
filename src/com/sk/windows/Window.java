@@ -1,18 +1,18 @@
 package com.sk.windows;
 
-import com.sk.SkMethodContext;
+import org.nathantehbeast.api.framework.context.Context;
 
 public interface Window {
 	public static final Window NIL = new Window() {
 		@Override
-		public boolean open(SkMethodContext ctx) {
+		public boolean open(Context ctx) {
 			return false;
 		}
 		@Override
-		public boolean isOpen(SkMethodContext ctx) {
+		public boolean isOpen(Context ctx) {
 			return false;
 		}
 	};
-	public boolean open(final SkMethodContext ctx);
-	public boolean isOpen(final SkMethodContext ctx);
+	public boolean open(final Context ctx);
+	public boolean isOpen(final Context ctx);
 }

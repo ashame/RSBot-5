@@ -49,8 +49,7 @@ public class GrabWines extends Node {
     public void execute() {
         final Point point = ctx.game.groundToScreen((int) ((HOVER.getX() - ctx.game.getMapBase().getX() + 0.6D) * 512.0D), (int) ((HOVER.getY() - ctx.game.getMapBase().getY() + 0.37D) * 513.0D), 2, 500);
         if (!ctx.getClient().isSpellSelected()) {
-            ctx.actionBar.setExpanded(true);
-            ctx.actionBar.getActionAt(0).select();
+            ctx.keyboard.send("1");
             new TimedCondition() {
                 @Override
                 public boolean check() {

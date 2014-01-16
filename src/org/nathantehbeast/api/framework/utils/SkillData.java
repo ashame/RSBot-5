@@ -12,6 +12,7 @@ import org.powerbot.script.util.Timer;
  * To change this template use File | Settings | File Templates.
  */
 
+@SuppressWarnings("ALL")
 public class SkillData extends Provider {
 
     public static final int NUM_SKILL = 26;

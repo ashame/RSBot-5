@@ -1,6 +1,6 @@
 package com.sk.windows;
 
-import com.sk.SkMethodContext;
+import org.nathantehbeast.api.framework.context.Context;
 
 public enum InnerAbilityTab implements Window {
 	ATTACK_ABILITY(MainWindow.MELEE_ABILITIES, 0, "Attack", 4),
@@ -38,7 +38,7 @@ public enum InnerAbilityTab implements Window {
 	}
 
 	@Override
-	public boolean open(final SkMethodContext ctx) {
+	public boolean open(final Context ctx) {
 		if (isOpen(ctx))
 			return true;
 		return superWindow.open(ctx)
@@ -46,7 +46,7 @@ public enum InnerAbilityTab implements Window {
 	}
 
 	@Override
-	public boolean isOpen(SkMethodContext ctx) {
+	public boolean isOpen(Context ctx) {
 		return superWindow.isOpen(ctx) && (ctx.settings.get(TAB_SETTING) >> shift & 0xf) == component;
 	}
 

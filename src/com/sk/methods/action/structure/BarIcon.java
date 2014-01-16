@@ -4,11 +4,11 @@ import org.powerbot.script.wrappers.Component;
 import org.powerbot.script.wrappers.Identifiable;
 import org.powerbot.script.wrappers.Validatable;
 
-import com.sk.SkMethodContext;
+import org.nathantehbeast.api.framework.context.Context;
 
 public interface BarIcon extends Validatable, Identifiable {
 
-	public Component getComponent(SkMethodContext ctx);
+	public Component getComponent(Context ctx);
 
 	public static final BarIcon NIL = Ability.NIL;
 }

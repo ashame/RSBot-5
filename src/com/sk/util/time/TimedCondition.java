@@ -4,6 +4,7 @@ import org.powerbot.script.util.Timer;
 
 import com.sk.util.Condition;
 
+@SuppressWarnings("ALL")
 public abstract class TimedCondition implements Condition, Waitable {
 
 	public TimedCondition() {

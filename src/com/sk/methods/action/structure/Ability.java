@@ -2,7 +2,7 @@ package com.sk.methods.action.structure;
 
 import org.powerbot.script.wrappers.Component;
 
-import com.sk.SkMethodContext;
+import org.nathantehbeast.api.framework.context.Context;
 import com.sk.methods.action.ability.AbilityLevel;
 import com.sk.methods.action.ability.AbilityStyle;
 import com.sk.windows.Window;
@@ -48,7 +48,7 @@ public interface Ability extends BookIcon {
 		}
 
 		@Override
-		public Component getComponent(SkMethodContext ctx) {
+		public Component getComponent(Context ctx) {
 			return ctx.widgets.get(0, 0);
 		}
 
@@ -78,7 +78,7 @@ public interface Ability extends BookIcon {
 		}
 
 		@Override
-		public Component getCooldownComponent(SkMethodContext ctx) {
+		public Component getCooldownComponent(Context ctx) {
 			return getComponent(ctx);
 		}
 

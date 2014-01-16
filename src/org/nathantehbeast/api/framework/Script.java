@@ -1,14 +1,11 @@
 package org.nathantehbeast.api.framework;
 
-import com.sk.SkMethodContext;
+import org.nathantehbeast.api.framework.context.Context;
 import org.powerbot.event.PaintListener;
 import org.powerbot.script.methods.Environment;
-
-import org.nathantehbeast.api.framework.context.Context;
 import org.nathantehbeast.api.framework.methods.LoopTask;
 import org.nathantehbeast.api.framework.utils.Logger;
 import org.powerbot.script.PollingScript;
-import org.powerbot.script.methods.MethodContext;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -29,7 +26,6 @@ public abstract class Script extends PollingScript implements PaintListener {
     private boolean logger = Environment.getDisplayName().equalsIgnoreCase("nathan l");
     public int delay = 600;
     public Context ctx;
-    public SkMethodContext sk;
 
     public Script() {
         this.ctx = new Context(super.ctx, this);
@@ -96,7 +92,7 @@ public abstract class Script extends PollingScript implements PaintListener {
         return delay;
     }
 
-    public abstract void loop();
+    public void loop() {}
 
     @Override
     public void stop() {
@@ -105,13 +101,13 @@ public abstract class Script extends PollingScript implements PaintListener {
         exit();
     }
 
-    public abstract void exit();
+    public void exit() {};
 
     @Override
     public void repaint(Graphics g) {
         onRepaint((Graphics2D) g);
     }
 
-    public abstract void onRepaint(Graphics2D g);
+    public void onRepaint(Graphics2D g) {}
 
 }

@@ -2,7 +2,6 @@ package org.nathantehbeast.scripts.winegrabber.jobs;
 
 import org.nathantehbeast.api.framework.Node;
 import org.nathantehbeast.api.framework.context.Context;
-import org.nathantehbeast.api.framework.methods.Lodestone;
 import org.nathantehbeast.api.framework.methods.Lodestone.Location;
 import org.powerbot.script.util.Timer;
 import org.powerbot.script.wrappers.Tile;
@@ -16,6 +15,7 @@ import org.powerbot.script.wrappers.TilePath;
  * To change this template use File | Settings | File Templates.
  */
 
+@SuppressWarnings("ALL")
 public class TraverseBank extends Node {
 
     private final TilePath PATH;

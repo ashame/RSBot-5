@@ -21,11 +21,11 @@ public abstract class LoopTask extends Task {
 
     @Override
     public void run() {
-        while (running && context.isRunning()) {
+        while (running && ctx.isRunning()) {
             try {
                 final int wait = loop();
                 if (wait > 0) {
-                    sleep(wait);
+                    Thread.sleep(wait);
                 } else {
                     running = false;
                 }

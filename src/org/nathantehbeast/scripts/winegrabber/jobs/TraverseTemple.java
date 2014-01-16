@@ -15,6 +15,7 @@ import org.powerbot.script.wrappers.TilePath;
  * To change this template use File | Settings | File Templates.
  */
 
+@SuppressWarnings("ALL")
 public class TraverseTemple extends Node {
 
     private final TilePath PATH;
